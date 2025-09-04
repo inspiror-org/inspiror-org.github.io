@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inspiror</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #46D7A3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    img {
+      width: 200px; /* ajusta al tamaño de tu logo */
+      animation: zoomIn 2s ease-in-out;
+    }
+
+    @keyframes zoomIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sustituye logo.png por la ruta real de tu logo en blanco -->
+  <img src="logo.png" alt="Inspiror Logo">
+</body>
+</html>
