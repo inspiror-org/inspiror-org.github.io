@@ -131,4 +131,24 @@ html{scroll-behavior:smooth;scroll-padding-top:96px}
 
 /* Minimal banding: handled via .section-contrast only */
 
+/* Mobile adjustments */
+@media (max-width:760px){
+  .container{padding:0 16px}
+  .navbar{padding:10px 14px}
+  .nav-links{gap:8px}
+  .nav-links a{font-size:13px;padding:6px 8px}
+  .btn{padding:8px 12px;border-radius:12px}
+  .btn-lg{padding:12px 16px}
+  .hero{padding-top:96px;padding-bottom:64px}
+  .hero-title{font-size:30px}
+  .hero-subtitle{font-size:16px}
+  .hero-ctas{flex-direction:column;gap:8px}
+  .grid{gap:12px}
+  .cta-dual .panel{padding:16px}
+  .page-header{padding-top:96px;padding-bottom:24px}
+  html{scroll-padding-top:80px}
+  .section, .hero, .page-header{scroll-margin-top:80px}
+  .footer-grid{grid-template-columns:1fr;gap:10px;justify-items:center;text-align:center}
+  .footer-cta{justify-content:center}
+}
 

@@ -4,7 +4,8 @@
   if(!canvas) return;
   const ctx=canvas.getContext('2d');
   let particles=[];
-  const particleCount=140;
+  const isMobile=window.matchMedia('(max-width: 760px)').matches;
+  const particleCount=isMobile?80:140;
   let pointer={x:window.innerWidth/2, y:window.innerHeight/2};
 
   function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
@@ -55,11 +56,12 @@
   }
 
   function drawShapes(){
-    for(let i=0;i<4;i++){
+    const blobs=isMobile?2:4;
+    for(let i=0;i<blobs;i++){
       const x=Math.sin(Date.now()/5000+i)*220+canvas.width/2;
       const y=Math.cos(Date.now()/5000+i)*160+canvas.height/2;
       ctx.beginPath();
-      ctx.arc(x,y,60,0,Math.PI*2);
+      ctx.arc(x,y,isMobile?40:60,0,Math.PI*2);
       ctx.fillStyle='rgba(70,215,163,0.04)';
       ctx.fill();
     }
