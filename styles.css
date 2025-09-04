@@ -33,6 +33,7 @@ body{
   background:linear-gradient(to bottom, rgba(5,18,16,0.85), rgba(5,18,16,0.35));
   border-bottom:1px solid var(--border);
 }
+.nav-toggle{display:none}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
 .brand-logo{height:28px;filter:drop-shadow(0 0 10px rgba(70,215,163,0.5))}
 .brand-logo.small{height:22px}
@@ -66,6 +67,8 @@ body{
 .section-contrast{background:linear-gradient(180deg, rgba(70,215,163,0.14), rgba(255,255,255,0));}
 .section-title{font-size:28px;margin:0 0 10px}
 .section-subtitle{margin:0 0 18px;color:var(--muted)}
+.problem-headings .section-subtitle{margin:0 0 8px}
+.card .section-subtitle{margin:0 0 8px}
 .lead{color:var(--muted);font-size:18px;max-width:900px}
 .kicker{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin:0 0 6px}
 .headline{font-size:22px;margin:0 0 14px}
@@ -135,8 +138,10 @@ html{scroll-behavior:smooth;scroll-padding-top:96px}
 @media (max-width:760px){
   .container{padding:0 16px}
   .navbar{padding:10px 14px}
-  .nav-links{gap:8px}
-  .nav-links a{font-size:13px;padding:6px 8px}
+  .nav-toggle{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,0.06);color:var(--text)}
+  .nav-links{position:fixed;top:58px;left:12px;right:12px;display:none;flex-direction:column;gap:10px;padding:12px;border:1px solid var(--border);border-radius:14px;background:rgba(5,18,16,0.92);backdrop-filter:blur(10px);z-index:11}
+  body.nav-open .nav-links{display:flex}
+  .nav-links a{font-size:14px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.02)}
   .btn{padding:8px 12px;border-radius:12px}
   .btn-lg{padding:12px 16px}
   .hero{padding-top:96px;padding-bottom:64px}
@@ -150,5 +155,6 @@ html{scroll-behavior:smooth;scroll-padding-top:96px}
   .section, .hero, .page-header{scroll-margin-top:80px}
   .footer-grid{grid-template-columns:1fr;gap:10px;justify-items:center;text-align:center}
   .footer-cta{justify-content:center}
+  body.nav-open{overflow:hidden}
 }
 

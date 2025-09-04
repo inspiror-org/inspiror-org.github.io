@@ -110,6 +110,18 @@
     });
   });
 
+  // Mobile nav toggle
+  const toggle=document.querySelector('.nav-toggle');
+  const navLinks=document.querySelector('.nav-links');
+  if(toggle && navLinks){
+    toggle.addEventListener('click',()=>{
+      document.body.classList.toggle('nav-open');
+    });
+    navLinks.querySelectorAll('a').forEach(link=>{
+      link.addEventListener('click',()=>{ document.body.classList.remove('nav-open') });
+    });
+  }
+
   // Year
   const y=document.getElementById('year');
   if(y) y.textContent=new Date().getFullYear();
