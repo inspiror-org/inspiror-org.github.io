@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inspiror — Quiero inspirarme</title>
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="canvas-container"><canvas id="particleCanvas"></canvas></div>
+  <header class="navbar">
+    <a class="brand" href="/wip/">
+      <img class="brand-logo" src="../logo.png" alt="Inspiror" />
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#problema">El problema</a>
+      <a href="index.html#vision">Visión</a>
+      <a href="index.html#como">Cómo lo hacemos</a>
+      <a href="manifesto.html">Manifiesto</a>
+      <a class="btn btn-solid" href="inspirarme.html">Quiero inspirarme</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Quiero inspirarme</h1>
+        <p class="page-lead">Conecta con gente real que ya tomó decisiones difíciles. Aprende de sus aciertos y tropiezos para elegir mejor tu siguiente paso.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="well">
+          <h2>Qué te llevas</h2>
+          <ul class="list">
+            <li>Charlas con historias reales y consejos aplicables.</li>
+            <li>Mentorías 1:1 para desbloquear tu siguiente paso.</li>
+            <li>Puentes hacia comunidades y oportunidades (también fuera de Galicia).</li>
+            <li>Más criterio para decidir con libertad.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="info-card">
+            <h3>Apúntate</h3>
+            <p>Te avisaremos de la próxima charla o mentoría disponible.</p>
+            <form action="https://formspree.io/f/mwkgrvjq" method="POST">
+              <div style="display:grid;gap:10px;margin-top:10px">
+                <input required name="nombre" placeholder="Tu nombre" style="padding:12px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,0.06);color:var(--text)" />
+                <input required type="email" name="email" placeholder="Tu email" style="padding:12px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,0.06);color:var(--text)" />
+                <button class="btn btn-solid" type="submit">Quiero inspirarme</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img class="brand-logo small" src="../logo.png" alt="Inspiror" />
+      </div>
+      <nav class="footer-links">
+        <a href="index.html#problema">El problema</a>
+        <a href="index.html#vision">Visión</a>
+        <a href="index.html#como">Cómo</a>
+        <a href="manifesto.html">Manifiesto</a>
+      </nav>
+    </div>
+    <div class="container tiny">
+      <p>© <span id="year"></span> Inspiror. Hecho en Galicia</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
+

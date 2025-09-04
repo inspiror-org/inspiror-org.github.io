@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inspiror — Quiero inspirar</title>
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="canvas-container"><canvas id="particleCanvas"></canvas></div>
+  <header class="navbar">
+    <a class="brand" href="/wip/">
+      <img class="brand-logo" src="../logo.png" alt="Inspiror" />
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#problema">El problema</a>
+      <a href="index.html#vision">Visión</a>
+      <a href="index.html#como">Cómo lo hacemos</a>
+      <a href="manifesto.html">Manifiesto</a>
+      <a class="btn btn-ghost" href="inspirar.html">Quiero inspirar</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Quiero inspirar</h1>
+        <p class="page-lead">Si seguiste un camino distinto, tu historia puede desbloquear a alguien que está ahora donde tú estuviste.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="well">
+          <h2>Cómo puedes ayudar</h2>
+          <ul class="list">
+            <li>Dar una charla (presencial u online) con aprendizajes prácticos.</li>
+            <li>Ofrecer mentorías 1:1 a estudiantes con intereses afines.</li>
+            <li>Abrir puertas: recomendaciones, prácticas, comunidades y oportunidades.</li>
+            <li>Ayudar a que más jóvenes tengan experiencias fuera de Galicia.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="info-card">
+            <h3>Propón tu colaboración</h3>
+            <p>Cuéntanos cómo te gustaría aportar y tu disponibilidad.</p>
+            <form action="https://formspree.io/f/mwkgrvjq" method="POST">
+              <div style="display:grid;gap:10px;margin-top:10px">
+                <input required name="nombre" placeholder="Tu nombre" style="padding:12px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,0.06);color:var(--text)" />
+                <input required type="email" name="email" placeholder="Tu email" style="padding:12px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,0.06);color:var(--text)" />
+                <textarea required name="mensaje" placeholder="Cómo te gustaría colaborar" rows="5" style="padding:12px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,0.06);color:var(--text)"></textarea>
+                <button class="btn btn-ghost" type="submit">Quiero inspirar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container section-cards">
+        <div class="info-card"><h3>Qué buscamos</h3><p>Historias honestas, criterio, y ganas de ayudar.</p></div>
+        <div class="info-card"><h3>Qué ofrecemos</h3><p>Comunidad, visibilidad y estructura para maximizar impacto.</p></div>
+        <div class="info-card"><h3>Compromiso</h3><p>Flexible. Empezar pequeño, crecer con intención.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img class="brand-logo small" src="../logo.png" alt="Inspiror" />
+      </div>
+      <nav class="footer-links">
+        <a href="index.html#problema">El problema</a>
+        <a href="index.html#vision">Visión</a>
+        <a href="index.html#como">Cómo</a>
+        <a href="manifesto.html">Manifiesto</a>
+      </nav>
+    </div>
+    <div class="container tiny">
+      <p>© <span id="year"></span> Inspiror. Hecho en Galicia</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  </body>
+  </html>
+
