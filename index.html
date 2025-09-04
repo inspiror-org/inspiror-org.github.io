@@ -6,142 +6,189 @@
 <title>Inspiror</title>
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(135deg, #46D7A3 0%, #1DBF9A 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Helvetica, sans-serif;
-    color: white;
-    overflow: hidden;
-    perspective: 1500px;
-  }
+body {
+  margin:0;
+  height:100vh;
+  background: linear-gradient(135deg, #46D7A3 0%, #1DBF9A 100%);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  font-family:-apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Helvetica, sans-serif;
+  color:white;
+  overflow:hidden;
+  perspective:1500px;
+}
 
-  .particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 0;
-  }
+.canvas-container {
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:0;
+  pointer-events:none;
+}
 
-  .particle {
-    position: absolute;
-    background: rgba(255,255,255,0.2);
-    border-radius: 50%;
-    animation: floatParticle linear infinite;
-  }
+img {
+  width:380px;
+  z-index:2;
+  filter: drop-shadow(0 0 20px rgba(255,255,255,0.4));
+  animation: fadeInLogo 2s ease-out forwards, breatheGlow 4s ease-in-out infinite alternate;
+  opacity:0;
+}
 
-  @keyframes floatParticle {
-    0% { transform: translateY(100vh) translateX(0) scale(0.5); opacity:0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(-10vh) translateX(50px) scale(1); opacity:0; }
-  }
+@keyframes fadeInLogo {
+  0%{opacity:0;transform:scale(0.8);}
+  100%{opacity:1;transform:scale(1);}
+}
 
-  img {
-    width: 380px;
-    z-index: 2;
-    filter: drop-shadow(0 0 20px rgba(255,255,255,0.4));
-    animation: fadeInLogo 2s ease-out forwards;
-    opacity: 0;
-    transition: filter 0.2s ease;
-  }
+@keyframes breatheGlow {
+  0%,100%{filter: drop-shadow(0 0 20px rgba(255,255,255,0.4));}
+  50%{filter: drop-shadow(0 0 35px rgba(255,255,255,0.6));}
+}
 
-  @keyframes fadeInLogo {
-    0% { opacity: 0; transform: scale(0.8); }
-    100% { opacity: 1; transform: scale(1); }
-  }
+h1 {
+  margin-top:2rem;
+  font-size:1.3rem;
+  font-weight:200;
+  letter-spacing:0.5px;
+  opacity:0;
+  animation: fadeInText 2s ease-out forwards, floatText 6s ease-in-out infinite alternate, breatheText 4s ease-in-out infinite alternate;
+  animation-delay:1.5s;
+  z-index:2;
+  max-width:90%;
+  text-align:center;
+  text-shadow:0 4px 20px rgba(0,0,0,0.15);
+  transition:text-shadow 0.2s ease, color 0.2s ease;
+}
 
-  h1 {
-    margin-top: 2rem;
-    font-size: 1.6rem;
-    font-weight: 200;
-    letter-spacing: 0.5px;
-    opacity: 0;
-    animation: fadeInText 2s ease-out forwards, floatText 6s ease-in-out infinite alternate;
-    animation-delay: 1.5s;
-    z-index: 2;
-    max-width: 90%;
-    text-align: center;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    transition: text-shadow 0.2s ease, color 0.2s ease;
-  }
+@keyframes fadeInText {
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
 
-  @keyframes fadeInText {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+@keyframes floatText {
+  0%{transform:translateY(0) translateZ(0);}
+  50%{transform:translateY(-12px) translateZ(15px);}
+  100%{transform:translateY(0) translateZ(0);}
+}
 
-  @keyframes floatText {
-    0% { transform: translateY(0) translateZ(0); }
-    50% { transform: translateY(-12px) translateZ(15px); }
-    100% { transform: translateY(0) translateZ(0); }
-  }
-
-  @keyframes breatheGlow {
-    0%, 100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.4)); text-shadow: 0 4px 20px rgba(0,0,0,0.15); }
-    50% { filter: drop-shadow(0 0 35px rgba(255,255,255,0.6)); text-shadow: 0 4px 35px rgba(0,0,0,0.25); }
-  }
-
-  img, h1 {
-    animation-name: fadeInLogo, breatheGlow;
-    animation-duration: 2s, 4s;
-    animation-iteration-count: 1, infinite;
-    animation-timing-function: ease-out, ease-in-out;
-    animation-fill-mode: forwards;
-  }
+@keyframes breatheText {
+  0%,100%{text-shadow:0 4px 20px rgba(0,0,0,0.15);}
+  50%{text-shadow:0 4px 35px rgba(0,0,0,0.25);}
+}
 </style>
 </head>
 <body>
-<div class="particles"></div>
+<div class="canvas-container">
+  <canvas id="particleCanvas"></canvas>
+</div>
 <img src="logo.png" alt="Inspiror Logo">
 <h1>Algo grande está en camino 🚀</h1>
 
 <script>
-  const particleCount = 80;
-  const particlesContainer = document.querySelector('.particles');
-  const logo = document.querySelector('img');
-  const text = document.querySelector('h1');
+const canvas=document.getElementById('particleCanvas');
+const ctx=canvas.getContext('2d');
+let particles=[];
+const particleCount=120;
+let pointer={x:window.innerWidth/2, y:window.innerHeight/2};
 
-  for(let i = 0; i < particleCount; i++){
-    const particle = document.createElement('div');
-    particle.classList.add('particle');
-    particle.style.left = Math.random() * 100 + 'vw';
-    particle.style.width = particle.style.height = (2 + Math.random() * 4) + 'px';
-    particle.style.animationDuration = (3 + Math.random() * 6) + 's';
-    particle.dataset.speedX = (Math.random() - 0.5) * 0.5;
-    particle.dataset.speedY = (Math.random() - 0.5) * 0.5;
-    particle.dataset.depth = Math.random() * 20 + 10; // profundidad
-    particlesContainer.appendChild(particle);
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+window.addEventListener('resize',resizeCanvas);
+resizeCanvas();
+
+class Particle{
+  constructor(){this.reset();}
+  reset(){
+    this.x=Math.random()*canvas.width;
+    this.y=Math.random()*canvas.height;
+    this.size=Math.random()*3+1;
+    this.speedX=(Math.random()-0.5)*0.5;
+    this.speedY=(Math.random()-0.5)*0.5;
+    this.depth=Math.random()*25+10;
   }
-  
-  document.addEventListener('mousemove', (e) => {
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
-    const offsetX = (e.clientX - centerX) / centerX;
-    const offsetY = (e.clientY - centerY) / centerY;
+  update(){
+    this.x+=this.speedX;
+    this.y+=this.speedY;
+    if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();
+  }
+  draw(){
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fillStyle='rgba(255,255,255,0.2)';
+    ctx.fill();
+  }
+}
 
-    document.querySelectorAll('.particle').forEach(p => {
-      const speedX = p.dataset.speedX;
-      const speedY = p.dataset.speedY;
-      const depth = p.dataset.depth;
-      p.style.transform = `translate(${offsetX*speedX*depth}px, ${offsetY*speedY*depth}px)`;
-    });
+for(let i=0;i<particleCount;i++){particles.push(new Particle());}
 
-    const glowIntensity = 25 + (offsetX + offsetY) * 10;
-    logo.style.filter = `drop-shadow(0 0 ${glowIntensity}px rgba(255,255,255,0.7))`;
-    text.style.textShadow = `0 4px ${glowIntensity}px rgba(0,0,0,0.3)`;
+function drawLines(){
+  for(let i=0;i<particles.length;i++){
+    for(let j=i+1;j<particles.length;j++){
+      const dx=particles[i].x-particles[j].x;
+      const dy=particles[i].y-particles[j].y;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120){
+        ctx.strokeStyle=`rgba(255,255,255,${0.1+0.2*(1-dist/120)})`;
+        ctx.lineWidth=1;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x,particles[i].y);
+        ctx.lineTo(particles[j].x,particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function drawShapes(){
+  for(let i=0;i<5;i++){
+    const x=Math.sin(Date.now()/5000+i)*200+canvas.width/2;
+    const y=Math.cos(Date.now()/5000+i)*150+canvas.height/2;
+    ctx.beginPath();
+    ctx.arc(x,y,50,0,Math.PI*2);
+    ctx.fillStyle='rgba(255,255,255,0.02)';
+    ctx.fill();
+  }
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  drawShapes();
+  particles.forEach(p=>{
+    p.x+=(pointer.x-canvas.width/2)*0.0005*p.depth;
+    p.y+=(pointer.y-canvas.height/2)*0.0005*p.depth;
+    p.update();
+    p.draw();
   });
+  drawLines();
+  requestAnimationFrame(animate);
+}
 
-  const particles = document.querySelectorAll('.particle');
-  particles.forEach((p,i)=>{
-    p.style.animationDelay = (Math.random()*2) + 's';
-  });
+animate();
+
+function updatePointer(e){
+  if(e.touches){
+    pointer.x=e.touches[0].clientX;
+    pointer.y=e.touches[0].clientY;
+  } else{
+    pointer.x=e.clientX;
+    pointer.y=e.clientY;
+  }
+
+  const glowIntensity=25+((pointer.x-canvas.width/2)/canvas.width+(pointer.y-canvas.height/2)/canvas.height)*15;
+  document.querySelector('img').style.filter=`drop-shadow(0 0 ${glowIntensity}px rgba(255,255,255,0.7))`;
+  document.querySelector('h1').style.textShadow=`0 4px ${glowIntensity}px rgba(0,0,0,0.3)`;
+}
+
+document.addEventListener('mousemove',updatePointer);
+document.addEventListener('touchmove',updatePointer);
+
+// scroll parallax
+window.addEventListener('scroll',()=>{
+  const scrollY=window.scrollY;
+  document.querySelector('.canvas-container').style.transform=`translateY(${scrollY*0.3}px)`;
+});
 </script>
 </body>
 </html>
