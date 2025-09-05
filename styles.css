@@ -35,8 +35,8 @@ body{
 }
 .nav-toggle{display:none}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
-.brand-logo{height:28px;filter:drop-shadow(0 0 10px rgba(70,215,163,0.5))}
-.brand-logo.small{height:22px}
+.brand-logo{height:38px;filter:drop-shadow(0 0 10px rgba(70,215,163,0.5))}
+.brand-logo.small{height:28px}
 .brand-name{font-weight:600;letter-spacing:0.2px}
 .nav-links{display:flex;gap:14px;align-items:center}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;padding:8px 10px;border-radius:10px;transition:color .2s, background .2s}
