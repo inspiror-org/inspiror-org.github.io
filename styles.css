@@ -8,10 +8,10 @@
   --glass:rgba(255,255,255,0.10);
   --border:rgba(70,215,163,0.28);
   --shadow:0 10px 30px rgba(0,0,0,0.18);
+  --separator:rgba(255,255,255,0.14);
 }
 
 *{box-sizing:border-box}
-html,body{height:100%}
 body{
   margin:0;
   background: radial-gradient(1200px 800px at 20% 10%, rgba(70,215,163,0.40), transparent),
@@ -64,6 +64,8 @@ body{
 .hero-ctas{display:flex;gap:12px;justify-content:center}
 
 .section{position:relative;z-index:1;padding:88px 0}
+.home .section:not(:first-of-type)::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg, rgba(255,255,255,0), var(--separator), rgba(255,255,255,0));pointer-events:none}
+.home .section.separated-strong::before{height:2px;opacity:.9}
 .section-contrast{background:linear-gradient(180deg, rgba(70,215,163,0.14), rgba(255,255,255,0));}
 .section-title{font-size:28px;margin:0 0 10px}
 .section-subtitle{margin:0 0 18px;color:var(--muted)}
@@ -123,6 +125,10 @@ body{
 /* Typography helpers */
 h1,h2,h3,h4,h5,p{margin:0}
 p + p{margin-top:10px}
+
+/* Placeholder color */
+input::placeholder, textarea::placeholder{color:#FFFFFF;opacity:1}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{color:#FFFFFF;opacity:1}
 
 /* Smooth anchors */
 html{scroll-behavior:smooth;scroll-padding-top:96px}
