@@ -324,7 +324,7 @@
         li1:"🎓 Ás veces pesa máis “sacar o título axiña” ca aprender en profundidade.",
         li2:"💼 Os primeiros traballos adoitan ser repetitivos e pouco creativos.",
         li3:"🔒 Priorízase a seguridade inmediata fronte á curiosidade e á exploración.",
-        consequenceTitle:"Consecuncia",
+        consequenceTitle:"Consecuencia",
         consequence:"Se a xente nova non explora o seu potencial, perdemos todos. Redúcese a capacidade de innovar con selo propio e pérdense ideas e perspectivas novas. O noso país precisa máis creatividade para construír un futuro competitivo e aberto ao mundo."
       },
       vision:{
